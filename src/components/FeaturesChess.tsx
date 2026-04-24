@@ -14,9 +14,8 @@ interface ChessRowProps {
 function ChessRow({ reverse, title, body, btnLabel, gif }: ChessRowProps) {
   return (
     <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 items-center`}>
-      {/* Text side */}
       <div className="flex-1 flex flex-col gap-6">
-        <h3 className="text-3xl md:text-4xl font-heading italic text-white leading-[0.95] tracking-tight">
+        <h3 className="text-2xl md:text-3xl font-heading italic text-white leading-[1.05] tracking-tight">
           <BlurText text={title} delay={80} />
         </h3>
         <p className="text-white/60 font-body font-light text-sm md:text-base leading-relaxed">
@@ -27,9 +26,8 @@ function ChessRow({ reverse, title, body, btnLabel, gif }: ChessRowProps) {
         </button>
       </div>
 
-      {/* Image side */}
-      <div className="flex-1 liquid-glass rounded-2xl overflow-hidden">
-        <img src={gif} alt={title} className="w-full h-auto object-cover" />
+      <div className="flex-1 liquid-glass rounded-2xl overflow-hidden" style={{ aspectRatio: '16/10' }}>
+        <img src={gif} alt={title} className="w-full h-full object-cover" />
       </div>
     </div>
   )
@@ -37,8 +35,7 @@ function ChessRow({ reverse, title, body, btnLabel, gif }: ChessRowProps) {
 
 export default function FeaturesChess() {
   return (
-    <section className="px-8 lg:px-24 py-24 flex flex-col gap-20">
-      {/* Header */}
+    <section className="px-8 lg:px-24 section-padding flex flex-col gap-20">
       <div className="flex flex-col items-center text-center gap-4">
         <div className="liquid-glass rounded-full px-3.5 py-1">
           <span className="text-white text-xs font-medium font-body">Capabilities</span>
@@ -48,7 +45,6 @@ export default function FeaturesChess() {
         </h2>
       </div>
 
-      {/* Row 1 */}
       <ChessRow
         title="Designed to convert. Built to perform."
         body="Every pixel is intentional. Our AI studies what works across thousands of top sites — then builds yours to outperform them all."
@@ -56,7 +52,6 @@ export default function FeaturesChess() {
         gif={feature1}
       />
 
-      {/* Row 2 */}
       <ChessRow
         reverse
         title="It gets smarter. Automatically."

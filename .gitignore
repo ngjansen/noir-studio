@@ -27,3 +27,4 @@ dist-ssr
 temporary screenshots/
 .superpowers/
 screenshot.mjs
+.vercel

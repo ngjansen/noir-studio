@@ -20,7 +20,7 @@ export default function StartSection({ onOpenModal }: StartSectionProps) {
         className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none"
         style={{ height: '200px', background: 'linear-gradient(to top, black, transparent)' }}
       />
-      <div className="relative z-20 flex flex-col items-center text-center justify-center px-6 py-32 gap-6" style={{ minHeight: '500px' }}>
+      <div className="relative z-20 flex flex-col items-center text-center justify-center px-6 section-padding gap-6" style={{ minHeight: '500px' }}>
         <div className="liquid-glass rounded-full px-3.5 py-1">
           <span className="text-white text-xs font-medium font-body">How It Works</span>
         </div>

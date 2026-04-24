@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { motion } from 'motion/react'
 import { ArrowUpRight } from 'lucide-react'
 import BlurText from './BlurText'
@@ -29,9 +30,58 @@ const CASES = [
   },
 ]
 
+function CaseCard({ c }: { c: typeof CASES[0] }) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  return (
+    <motion.div
+      ref={cardRef}
+      whileHover={{ y: -6 }}
+      onHoverStart={() => cardRef.current?.classList.add('card-shimmer-active')}
+      onHoverEnd={() => cardRef.current?.classList.remove('card-shimmer-active')}
+      transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="group relative rounded-2xl overflow-hidden cursor-pointer card-shimmer"
+      style={{ background: c.bg, border: '1px solid rgba(255,255,255,0.08)' }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ background: `radial-gradient(ellipse at top left, ${c.accent}22, transparent 60%)` }}
+      />
+
+      <div className="p-7 flex flex-col" style={{ minHeight: '320px' }}>
+        <div className="flex items-start justify-between mb-auto">
+          <span
+            className="rounded-full px-3 py-1 text-xs font-body font-medium"
+            style={{ background: `${c.accent}22`, color: c.accent }}
+          >
+            {c.tag}
+          </span>
+          <ArrowUpRight size={16} className="text-white/20 group-hover:text-white/60 transition-colors" />
+        </div>
+
+        <div className="mt-16">
+          <div
+            className="w-12 h-12 rounded-2xl mb-5 flex items-center justify-center"
+            style={{ background: `${c.accent}18`, border: `1px solid ${c.accent}35` }}
+          >
+            <div className="w-4 h-4 rounded-full" style={{ background: c.accent }} />
+          </div>
+          <p className="text-xs text-white/30 font-body uppercase tracking-widest mb-1">{c.category}</p>
+          <h3 className="text-2xl font-heading italic text-white mb-3">{c.name}</h3>
+          <div
+            className="inline-flex rounded-lg px-3 py-1.5 mt-1"
+            style={{ background: `${c.accent}18` }}
+          >
+            <p className="text-sm font-body font-semibold" style={{ color: c.accent }}>{c.result}</p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 export default function Portfolio() {
   return (
-    <section className="px-6 lg:px-24 py-32">
+    <section className="px-6 lg:px-24 section-padding">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
@@ -48,38 +98,7 @@ export default function Portfolio() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {CASES.map((c) => (
-            <motion.div
-              key={c.name}
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
-              style={{ background: c.bg, border: '1px solid rgba(255,255,255,0.08)' }}
-            >
-              <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: `radial-gradient(ellipse at top left, ${c.accent}22, transparent 60%)` }} />
-
-              <div className="p-7 flex flex-col" style={{ minHeight: '320px' }}>
-                <div className="flex items-start justify-between mb-auto">
-                  <span className="rounded-full px-3 py-1 text-xs font-body font-medium"
-                    style={{ background: `${c.accent}22`, color: c.accent }}>
-                    {c.tag}
-                  </span>
-                  <ArrowUpRight size={16} className="text-white/20 group-hover:text-white/60 transition-colors" />
-                </div>
-
-                <div className="mt-16">
-                  <div className="w-10 h-10 rounded-xl mb-5 flex items-center justify-center"
-                    style={{ background: `${c.accent}22` }}>
-                    <div className="w-3 h-3 rounded-full" style={{ background: c.accent }} />
-                  </div>
-                  <p className="text-xs text-white/30 font-body uppercase tracking-widest mb-1">{c.category}</p>
-                  <h3 className="text-2xl font-heading italic text-white mb-3">{c.name}</h3>
-                  <p className="text-sm font-body font-light" style={{ color: c.accent }}>{c.result}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {CASES.map((c) => <CaseCard key={c.name} c={c} />)}
         </div>
       </div>
     </section>

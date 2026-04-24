@@ -20,7 +20,7 @@ export default function CtaFooter({ onOpenModal }: CtaFooterProps) {
         className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none"
         style={{ height: '200px', background: 'linear-gradient(to top, black, transparent)' }}
       />
-      <div className="relative z-20 flex flex-col items-center text-center px-8 lg:px-24 py-32 gap-6">
+      <div className="relative z-20 flex flex-col items-center text-center px-8 lg:px-24 section-padding gap-6">
         <h2 className="text-5xl md:text-6xl lg:text-7xl font-heading italic text-white leading-[0.85] max-w-3xl">
           <BlurText text="Your next website starts here." delay={80} />
         </h2>

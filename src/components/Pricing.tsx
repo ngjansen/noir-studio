@@ -57,7 +57,7 @@ interface PricingProps {
 
 export default function Pricing({ onOpenModal }: PricingProps) {
   return (
-    <section className="px-6 lg:px-24 py-32">
+    <section className="px-6 lg:px-24 section-padding">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="liquid-glass rounded-full px-3.5 py-1 inline-flex mb-4">
@@ -81,8 +81,8 @@ export default function Pricing({ onOpenModal }: PricingProps) {
               style={tier.highlight ? { border: '1px solid rgba(255,255,255,0.25)' } : {}}
             >
               {tier.highlight && (
-                <div className="absolute top-0 left-0 right-0 h-px"
-                  style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)' }} />
+                <div className="absolute top-0 left-0 right-0 h-[1.5px]"
+                  style={{ background: 'linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.65) 60%, transparent 95%)' }} />
               )}
               {tier.highlight && (
                 <span className="absolute top-4 right-4 text-xs font-body font-medium bg-white text-black rounded-full px-3 py-1">
@@ -92,7 +92,7 @@ export default function Pricing({ onOpenModal }: PricingProps) {
 
               <div className="mb-6">
                 <p className="text-xs text-white/30 font-body uppercase tracking-widest mb-1">{tier.name}</p>
-                <p className="text-4xl font-heading italic text-white mb-3">{tier.price}</p>
+                <p className="text-5xl font-heading italic text-white mb-3 leading-none">{tier.price}</p>
                 <p className="text-sm text-white/50 font-body font-light leading-relaxed">{tier.description}</p>
               </div>
 

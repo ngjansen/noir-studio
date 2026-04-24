@@ -26,7 +26,7 @@ const FEATURES = [
 
 export default function FeaturesGrid() {
   return (
-    <section className="px-8 lg:px-24 py-24 flex flex-col gap-12">
+    <section className="px-8 lg:px-24 section-padding flex flex-col gap-12">
       {/* Header */}
       <div className="flex flex-col items-center text-center gap-4">
         <div className="liquid-glass rounded-full px-3.5 py-1">
@@ -40,7 +40,7 @@ export default function FeaturesGrid() {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {FEATURES.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="liquid-glass rounded-2xl p-6 flex flex-col gap-4">
+          <div key={title} className="liquid-glass rounded-2xl p-6 flex flex-col gap-4 group hover:bg-white/[0.05] transition-colors duration-300 cursor-default">
             <div className="liquid-glass-strong rounded-full w-10 h-10 flex items-center justify-center">
               <Icon size={18} className="text-white" />
             </div>
