@@ -8,6 +8,9 @@ import FeaturesGrid from './components/FeaturesGrid'
 import Stats from './components/Stats'
 import Testimonials from './components/Testimonials'
 import CtaFooter from './components/CtaFooter'
+import BookingModal from './components/BookingModal'
+import Portfolio from './components/Portfolio'
+import Pricing from './components/Pricing'
 import { useActiveSection } from './hooks/useActiveSection'
 
 export default function App() {
@@ -30,13 +33,18 @@ export default function App() {
             <FeaturesChess />
             <FeaturesGrid />
           </section>
-          <section id="work">{/* Portfolio — Task 6 */}</section>
+          <section id="work">
+            <Portfolio />
+          </section>
           <Stats />
           <Testimonials />
-          <section id="pricing">{/* Pricing — Task 7 */}</section>
+          <section id="pricing">
+            <Pricing onOpenModal={openModal} />
+          </section>
           <CtaFooter onOpenModal={openModal} />
         </div>
       </div>
+      <BookingModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }
